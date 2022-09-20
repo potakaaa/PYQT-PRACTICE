@@ -1,0 +1,45 @@
+import PyQt5.QtWidgets as qtw
+import PyQt5.QtGui as qtg
+
+class MainWindow(qtw.QWidget):
+    def __init__(self):
+        super().__init__()
+        # ADD WINDOW TITLE
+        self.setWindowTitle("HELLO WORLD!!")
+
+        # ADD VERTICAL LAYOUT
+        self.setLayout(qtw.QVBoxLayout())
+
+        # ADD LABEL
+        my_label = qtw.QLabel("KINSAY PINAKAGWAPO??")
+        # CHANGE FONT
+        my_label.setFont(qtg.QFont('Arial', 20))
+        # SHOW ON SCREEN
+        self.layout().addWidget(my_label)
+
+        combo_box = qtw.QComboBox(self, editable = True, insertPolicy = qtw.QComboBox.InsertAtBottom)
+        combo_box.addItem("ANGELO")
+        combo_box.addItem("TALAID")
+        combo_box.addItem("JAMES")
+        combo_box.addItem("DEQUINO")
+        #combo_box.insertItems(0, ["Gerald", "Bajun"])
+        #combo_box.addItems(["ISA", "DUHA", "TULO"])
+        self.layout().addWidget(combo_box)
+
+        button = qtw.QPushButton("ENTER CHUY!!", clicked = lambda: enter_key())
+        self.layout().addWidget(button)
+        
+        # SHOW THE APP
+        self.show()
+
+        def enter_key():
+            gwapo = qtw.QLabel(f"SYEMPRE SI {combo_box.currentText()} NAGUD NA!!")
+            gwapo.setFont(qtg.QFont('Arial', 20))
+            self.layout().addWidget(gwapo)
+            
+        
+app=qtw.QApplication([])
+mw=MainWindow()
+
+# TO EXECUTE APP
+app.exec_()
