@@ -1,0 +1,41 @@
+import PyQt5.QtWidgets as qtw
+import PyQt5.QtGui as qtg
+
+class MainWindow(qtw.QWidget):
+    def __init__(self):
+        super().__init__()
+        
+        self.setWindowTitle("GRADE DESIRER")
+        self.setLayout(qtw.QVBoxLayout())
+
+        question = qtw.QLabel("PILA KABUOK ANG DIMPLES NI GERALD")
+        question.setFont(qtg.QFont('Helvetica', 20))
+        self.layout().addWidget(question)
+        
+        spin_box = qtw.QSpinBox(self,
+        value = 1,
+        minimum = 0,
+        maximum = 10,
+        singleStep = 1,
+        prefix = "Dimples:",
+        suffix = "!!!",)
+        spin_box.setFont(qtg.QFont('Helvetica', 15))
+        self.layout().addWidget(spin_box)
+
+        enter = qtw.QPushButton("ENTER!!!", clicked = lambda: enter_button())
+        self.layout().addWidget(enter)
+
+        def enter_button():
+            label = qtw.QLabel(f"Ang Dimples ni Gerald kay: {spin_box.value()} !!")
+            label.setFont(qtg.QFont('Helvetica', 20))
+            self.layout().addWidget(label)
+            #question.setText(f"Ang Dimples ni Gerald kay: {spin_box.value()} !!")
+
+
+        self.show()
+
+app=qtw.QApplication([])
+mw=MainWindow()
+
+# TO EXECUTE APP
+app.exec_()
