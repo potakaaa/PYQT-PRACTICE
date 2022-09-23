@@ -69,13 +69,13 @@ class Ui_CALCULATOR(object):
         font.setPointSize(26)
         self.button_5.setFont(font)
         self.button_5.setObjectName("button_5")
-        self.button_multiply = QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.press_it("x"))
+        self.button_multiply = QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.press_it("*"))
         self.button_multiply.setGeometry(QtCore.QRect(280, 200, 75, 75))
         font = QtGui.QFont()
         font.setPointSize(26)
         self.button_multiply.setFont(font)
         self.button_multiply.setObjectName("button_multiply")
-        self.button_divide = QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.press_it("÷"))
+        self.button_divide = QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.press_it("/"))
         self.button_divide.setGeometry(QtCore.QRect(365, 200, 75, 75))
         font = QtGui.QFont()
         font.setPointSize(26)
@@ -111,7 +111,7 @@ class Ui_CALCULATOR(object):
         font.setPointSize(26)
         self.button_subtract.setFont(font)
         self.button_subtract.setObjectName("button_subtract")
-        self.button_equals = QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.press_it("="))
+        self.button_equals = QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.math_it())
         self.button_equals.setGeometry(QtCore.QRect(365, 380, 75, 75))
         font = QtGui.QFont()
         font.setPointSize(26)
@@ -160,6 +160,14 @@ class Ui_CALCULATOR(object):
             pass
         else:
             self.output_label.setText(f"{screen}.")
+
+    def math_it(self):
+        try:
+            screen = self.output_label.text()
+            answer = eval(screen)
+            self.output_label.setText(str(answer))
+        except:
+            self.output_label.setText("Syntax error")
 
     def retranslateUi(self, CALCULATOR):
         _translate = QtCore.QCoreApplication.translate
